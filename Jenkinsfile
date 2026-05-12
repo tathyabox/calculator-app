@@ -25,6 +25,10 @@ pipeline {
                 sh 'docker push $IMAGE_NAME'
             }
         }
-
+	stage('Deploy') {
+ 	    steps {
+        	sh 'ansible-playbook -i /opt/ansible/hosts /opt/ansible/deploy.yml'
+    }
+}
     }
 }
