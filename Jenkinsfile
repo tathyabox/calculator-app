@@ -3,7 +3,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "192.168.137.50:5000/calculator-app:v1"
+        IMAGE_NAME = "192.168.137.51:5000/calculator-app:v1"
     }
 
     stages {
