@@ -2,23 +2,27 @@ pipeline {
 
     agent any
 
+    environment {
+        IMAGE_NAME = "192.168.137.50:5000/calculator-app:v1"
+    }
+
     stages {
 
         stage('Clone') {
             steps {
-                echo 'Code cloned successfully'
+                echo 'Cloning repository'
             }
         }
 
-        stage('Build') {
+        stage('Build Docker Image') {
             steps {
-                echo 'Building calculator application'
+                sh 'docker build -t $IMAGE_NAME .'
             }
         }
 
-        stage('Test') {
+        stage('Push Docker Image') {
             steps {
-                echo 'Testing calculator application'
+                sh 'docker push $IMAGE_NAME'
             }
         }
 
